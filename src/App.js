@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes ,Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import OpenRoute from './components/auth/OpenRoute';
 import PrivateRoute from './components/auth/PrivateRoute';
@@ -8,6 +8,8 @@ import UserList from './pages/UserList';
 
 
 function App() {
+
+
   return (
     <div className="App">
         <Routes>
