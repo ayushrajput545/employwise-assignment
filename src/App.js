@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
         <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path='/login' element={<OpenRoute><Login/></OpenRoute>}/>
           <Route path='/userlist' element={ <PrivateRoute><UserList/></PrivateRoute> }/>
         </Routes>
