@@ -74,10 +74,10 @@ npm i react-icons react-router-dom react-redux
 
 ## 🌍 Deployment
 The project is deployed on **Netlify**.
-🔗 [Live Demo](#) (Replace with actual Netlify link)
+🔗 [Live Demo](https://employwise-assigmnet.netlify.app/login) (Replace with actual Netlify link)
 
 ## 📷 Screenshots
-(Include relevant screenshots here)
+   (https://github.com/ayushrajput545/employwise-assignment/blob/main/Screenshot%202025-03-28%20183313.png)
 
 ## ⚡ How to Run the Project
 ### 1️⃣ Clone the Repository
