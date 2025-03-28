@@ -15,6 +15,8 @@ const UserList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [formData, setFormData] = useState({ first_name: "", last_name: "", email: "", avatar: "" });
   const [confirmationModal , setConfirmationModal]= useState(null);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchUsers(page);
@@ -26,6 +28,7 @@ const UserList = () => {
     //   console.log(response)
       setUsers(response.data.data);
       setTotalPages(response.data.total_pages);
+      setFilteredUsers(response.data.data);
     } catch (err) {
       console.error("Failed to fetch users", err);
     }
@@ -73,6 +76,7 @@ const UserList = () => {
     try {
       await axios.put(`https://reqres.in/api/users/${selectedUser.id}`, formData);
       setUsers(users.map(user => user.id === selectedUser.id ? { ...user, ...formData } : user));
+      setFilteredUsers(filteredUsers.map(user => user.id === selectedUser.id ? { ...user, ...formData } : user));
       setIsEditModalOpen(false);
       toast.success("Credentials Update Sucessfully")
       
@@ -91,6 +95,7 @@ const UserList = () => {
       setUsers(users.filter(user => user.id !== selectedUser.id));
     //   setIsDeleteModalOpen(false);
       setConfirmationModal(null)
+      setFilteredUsers(filteredUsers.filter(user => user.id !== selectedUser.id));
       toast.success("User Deleted Sucessfully")
 
     } catch (err) {
@@ -99,13 +104,32 @@ const UserList = () => {
     toast.dismiss(toastId)
   };
 
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    const query = e.target.value.toLowerCase();
+    const filtered = users.filter(user => 
+      `${user.first_name} ${user.last_name}`.toLowerCase().includes(query)
+    );
+    setFilteredUsers(filtered);
+  };
+
   return (
     <>
     <Navbar/>
     <div className="p-8">
       <h2 className="text-2xl font-bold text-white text-center">User List</h2>
+      <div className="flex justify-center my-4">
+          <input
+            type="text"
+            placeholder="Search users by name..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="w-full md:w-1/2 p-2 border rounded-lg outline-none"
+          />
+        </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <div key={user.id} className="p-4 bg-slate-400 shadow-md rounded">
             <img className="w-16 h-16 rounded-full mx-auto" src={user.avatar} alt={user.first_name} />
             <p className="text-center mt-2 font-semibold">{user.first_name} {user.last_name}</p>
