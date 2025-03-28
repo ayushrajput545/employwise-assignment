@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# React User Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Assignment Overview
+This project is a React application that integrates with the Reqres API to perform basic user management functions. It includes authentication, user listing, pagination, and user modification functionalities.
 
-## Available Scripts
+To test this, use the following credentials:
+- **Email:** `eve.holt@reqres.in`
+- **Password:** `cityslicka`
 
-In the project directory, you can run:
+## 🚀 Features
+### **Level 1: Authentication Screen**
+- A basic login screen where users can authenticate using credentials.
+- Uses the following API endpoint for authentication:
+  ```
+  POST /api/login
+  ```
+- On successful login:
+  - The API returns a **token**, which is stored in local storage.
+  - The user is redirected to the **Users List** page.
 
-### `npm start`
+### **Level 2: List All Users**
+- After authentication, users are displayed in a paginated list.
+- API endpoint to fetch user data:
+  ```
+  GET /api/users?page=1
+  ```
+- Displays:
+  - First Name
+  - Last Name
+  - Avatar
+- Implements **pagination** for navigating through different pages of users.
+- **Filter Users**: Users can be filtered by their **name**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **Level 3: Edit, Delete, and Update Users**
+#### **Edit User**
+- Clicking the **Edit** button opens a form pre-filled with user data.
+- Allows updating the following fields:
+  - First Name
+  - Last Name
+  - Email
+- API endpoint for updating user details:
+  ```
+  PUT /api/users/{id}
+  ```
+- **Confirmation Modal**: Before saving the changes, a modal appears asking for confirmation.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### **Delete User**
+- Clicking the **Delete** button removes the user from the list.
+- API endpoint for deleting a user:
+  ```
+  DELETE /api/users/{id}
+  ```
+- **Confirmation Modal**: Before deleting, a modal asks the user for confirmation.
+- Displays success or error messages based on the operation outcome.
 
-### `npm test`
+### **Logout Functionality**
+- A **Logout** button is available in the Navbar.
+- Clicking **Logout**:
+  - Clears the authentication token from local storage.
+  - Redirects the user to the **Login** page.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Technology Used
+- **React.js** - Frontend framework
+- **Tailwind CSS** - For styling
+- **Redux** - State management
+- **React Router DOM** - For navigation
+- **Axios** - API requests handling
 
-### `npm run build`
+## 📦 Dependencies
+To run this project locally, install the following dependencies:
+```sh
+npm i react-icons react-router-dom react-redux
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🌍 Deployment
+The project is deployed on **Netlify**.
+🔗 [Live Demo](#) (Replace with actual Netlify link)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📷 Screenshots
+(Include relevant screenshots here)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚡ How to Run the Project
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/your-repo/react-user-management.git
+cd react-user-management
+```
+### 2️⃣ Install Dependencies
+```sh
+npm install
+```
+### 3️⃣ Run the Application
+```sh
+npm start
+```
+The app will run on **`http://localhost:3000`**.
 
-### `npm run eject`
+## 🎯 Future Improvements
+- Implement user search functionality.
+- Improve UI with additional animations.
+- Add user role-based authentication.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📝 License
+This project is licensed under the MIT License.
